@@ -45,12 +45,12 @@ namespace Apple.Core
         /// <summary>
         /// Name of the folder that the Apple Unity Plug-Ins will use for storing permanent data assets and helper objects
         /// </summary>
-        public static string ApplePlugInSupportFolderName => "Apple Plug-In Support";
+        public static string ApplePlugInSupportFolderName => "Apple";
             
         /// <summary>
         /// Unity project path for assets, such as build settings, necessary to support Apple Unity Plug-Ins
         /// </summary>
-        public static string ApplePlugInSupportRootPath => $"Assets/{ApplePlugInSupportFolderName}";
+        public static string ApplePlugInSupportRootPath => $"Assets/Plugins/{ApplePlugInSupportFolderName}";
 
         /// <summary>
         /// Folder for Apple Plug-In assets meant to enable/improve/enhance Editor support
@@ -206,7 +206,7 @@ namespace Apple.Core
             if (!Directory.Exists(ApplePlugInSupportRootPath))
             {
                 Debug.Log($"[Apple Unity Plug-ins] Creating support folder: {ApplePlugInSupportRootPath}");
-                AssetDatabase.CreateFolder("Assets", ApplePlugInSupportFolderName);
+                AssetDatabase.CreateFolder(Path.GetDirectoryName(ApplePlugInSupportRootPath), Path.GetFileName(ApplePlugInSupportRootPath));
             }
 
             if (!Directory.Exists(ApplePlugInSupportEditorPath))
